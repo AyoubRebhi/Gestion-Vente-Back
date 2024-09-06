@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ventes{% endblock %}
+
+{% block body %}
+<h1>Liste des Ventes</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>BV</th>
+            <th>Numéro de Carte de Fidélité</th>
+            <th>ID Caisse</th>
+            <th>Liste des Articles</th>
+            <th>Remise Globale</th>
+            <th>Net à Payer</th>
+            <th>Payé</th>
+            <th>À Rendre</th>
+            <th>Date d'Achat</th>
+            <th>Total TTC</th>
+            <th>actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for vente in ventes %}
+        <tr>
+            <td>{{ vente.BV }}</td>
+            <td>{{ vente.numCarteFidalite }}</td>
+            <td>{{ vente.idCaisse }}</td>
+            <td>
+                {% for article in vente.listeArticles %}
+                    <div>Quantité: {{ article.quantity }}, Prix TTC: {{ article.prixTTC }}, Remise: {{ article.remise }}, Total TTC: {{ article.totalTTC }}</div>
+                {% endfor %}
+            </td>
+            <td>{{ vente.remiseGlobale }}</td>
+            <td>{{ vente.netApayer }}</td>
+            <td>{{ vente.payer }}</td>
+            <td>{{ vente.aRendre }}</td>
+            <td>{{ vente.dateAchat ? vente.dateAchat|date('Y-m-d H:i:s') : '' }}</td>
+            <td>{{ vente.totalTTC }}</td>
+            
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="11">Pas de ventes trouvées</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<a href="{{ path('app_vente_new') }}">Créer une nouvelle Vente</a>
+{% endblock %}

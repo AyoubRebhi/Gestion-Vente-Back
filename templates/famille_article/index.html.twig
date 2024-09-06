@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FamilleArticle index{% endblock %}
+
+{% block body %}
+    <h1>FamilleArticle index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Est_service</th>
+                <th>Libelle</th>
+                <th>Code</th>
+                <th>Est_default</th>
+                <th>Est_desactive</th>
+                <th>Cree_le</th>
+                <th>Cree_par</th>
+                <th>Cree_par_id</th>
+                <th>Modifier_le</th>
+                <th>Modifier_par</th>
+                <th>Modifier_par_id</th>
+                <th>Est_predefini</th>
+                <th>Conditionnement_vente_id</th>
+                <th>Conditionnement_achat_id</th>
+                <th>Est_gestion_stock</th>
+                <th>Numero_serie_lot</th>
+                <th>Coeff_marge</th>
+                <th>Periode_garantie</th>
+                <th>Contremarque</th>
+                <th>Depot_favori</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for famille_article in famille_articles %}
+            <tr>
+                <td>{{ famille_article.id }}</td>
+                <td>{{ famille_article.estService ? 'Yes' : 'No' }}</td>
+                <td>{{ famille_article.libelle }}</td>
+                <td>{{ famille_article.code }}</td>
+                <td>{{ famille_article.estDefault ? 'Yes' : 'No' }}</td>
+                <td>{{ famille_article.estDesactive ? 'Yes' : 'No' }}</td>
+                <td>{{ famille_article.creeLe ? famille_article.creeLe|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ famille_article.creePar}}</td>
+                <td>{{ famille_article.creeParId }}</td>
+                <td>{{ famille_article.modifierLe ? famille_article.modifierLe|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ famille_article.modifierPar }}</td>
+                <td>{{ famille_article.modifierParId }}</td>
+                <td>{{ famille_article.estPredefini ? 'Yes' : 'No' }}</td>
+                <td>{{ famille_article.conditionnementVenteId }}</td>
+                <td>{{ famille_article.conditionnementAchatId }}</td>
+                <td>{{ famille_article.estGestionStock ? 'Yes' : 'No' }}</td>
+                <td>{{ famille_article.numeroSerieLot }}</td>
+                <td>{{ famille_article.coeffMarge }}</td>
+                <td>{{ famille_article.periodeGarantie }}</td>
+                <td>{{ famille_article.contremarque ? 'Yes' : 'No' }}</td>
+                <td>{{ famille_article.depotFavori }}</td>
+                <td>
+                    <a href="{{ path('app_famille_article_show', {'id': famille_article.id}) }}">show</a>
+                    <a href="{{ path('app_famille_article_edit', {'id': famille_article.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="22">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_famille_article_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acompte</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+        .invoice-container {
+            width: 80mm;
+            margin: 0 auto;
+            padding: 10px;
+            border: 1px solid #000;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .header h1 {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+        .header p {
+            font-size: 12px;
+            margin: 2px 0;
+        }
+        .info, .items, .total, .thank-you {
+            margin-bottom: 10px;
+        }
+        .info div, .total div {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+        }
+        .items table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+        .items th, .items td {
+            padding: 5px;
+            text-align: left;
+        }
+        .items th {
+            border-bottom: 1px dashed #000;
+        }
+        .total div {
+            font-weight: bold;
+        }
+        .thank-you {
+            text-align: center;
+            font-size: 12px;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+<div class="invoice-container">
+    <div class="header">
+        <h1>ETC Tunisie</h1>
+        <p>Bon Acompte: #{{ vente.bv }}</p>
+        <p>Date: {{ vente.dateAchat|date('Y-m-d H:i:s') }}</p>
+    </div>
+    <div class="info">
+        <div>
+            <div>
+                <p><strong>Client:</strong></p>
+                <p>Nom: {{ clientNomPrenom }}<br>Numéro de carte fidélité: {{ numCarteFidalite }}<br>Points de fidélité: {{ pointFidelite }}</p>
+            </div>
+            <div>
+                <p><strong>ETC:</strong></p>
+                <p>Numéro caisse: 5<br>Adresse: RUE YAHYA BEN OMAR</p>
+            </div>
+        </div>
+    </div>
+    <div class="items">
+        <table>
+            <thead>
+                <tr>
+                    <th>Qte</th>
+                    <th>Description</th>
+                    <th>Remise</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for article in articles %}
+                    <tr>
+                        <td>{{ article.quantity }}</td>
+                        <td>{{ article.nom }}</td>
+                        <td>{{ article.remise }}%</td>
+                        <td>{{ article.totalTTC }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="total">
+        <div>
+            <span>Total TTC (€):</span>
+            <span>{{ vente.totalTTC }}</span>
+        </div>
+        <div>
+            <span>Remise Globale (%):</span>
+            <span>{{ vente.remiseGlobale }}</span>
+        </div>
+        <div>
+            <span>Net à payer (€):</span>
+            <span>{{ vente.netApayer }}</span>
+        </div>
+        <div>
+            <span>Montant déjà versé (€):</span>
+            <span>{{ vente.payer }}</span>
+        </div>
+        <div>
+            <span>Reste à payer (€):</span>
+            <span>{{ vente.acompte }}</span>
+        </div>
+        <div>
+            <span>Date limite:</span>
+            <span>{{ vente.dateLimite|date('Y-m-d') }}</span>
+        </div>
+    </div>
+    <div class="thank-you">
+        <p>MERCI ! AU PLAISIR DE FAIRE AFFAIRE AVEC VOUS!</p>
+    </div>
+</div>
+</body>
+</html>

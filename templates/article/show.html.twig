@@ -1,0 +1,202 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article{% endblock %}
+
+{% block body %}
+    <h1>Article</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ article.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ article.nom }}</td>
+            </tr>
+            {#<tr>
+                <th>Description</th>
+                <td>{{ article.description }}</td>
+            </tr>#}
+            <tr>
+                <th>Prix_achat_ht</th>
+                <td>{{ article.prixAchatHt }}</td>
+            </tr>
+            <tr>
+                <th>Prix_achat_ttc</th>
+                <td>{{ article.prixAchatTtc }}</td>
+            </tr>
+            <tr>
+                <th>Prix_vente_ht</th>
+                <td>{{ article.prixVenteHt }}</td>
+            </tr>
+            <tr>
+                <th>Prix_vente_ttc</th>
+                <td>{{ article.prixVenteTtc }}</td>
+            </tr>
+            <tr>
+                <th>Est_affiche_ttc</th>
+                <td>{{ article.estAfficheTtc ? 'Yes' : 'No' }}</td>
+            </tr>
+            {#<tr>
+                <th>Image</th>
+                <td>{{ article.image }}</td>
+            </tr>#}
+            <tr>
+                <th>Reference</th>
+                <td>{{ article.reference }}</td>
+            </tr>
+            <tr>
+                <th>Est_service</th>
+                <td>{{ article.estService ? 'Yes' : 'No' }}</td>
+            </tr>
+            {#<tr>
+                <th>Cree_le</th>
+                <td>{{ article.creeLe ? article.creeLe|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Cree_par</th>
+                <td>{{ article.creePar ? article.creePar|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Modifier_le</th>
+                <td>{{ article.modifierLe ? article.modifierLe|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Modifier_par</th>
+                <td>{{ article.modifierPar }}</td>
+            </tr>
+            <tr>
+                <th>Est_supprime</th>
+                <td>{{ article.estSupprime ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Est_bloque</th>
+                <td>{{ article.estBloque ? 'Yes' : 'No' }}</td>
+            </tr>#}
+            <tr>
+                <th>Code_barre</th>
+                <td>{{ article.codeBarre }}</td>
+            </tr>
+            {#<tr>
+                <th>Periode_garentie</th>
+                <td>{{ article.periodeGarentie }}</td>
+            </tr>
+            <tr>
+                <th>Fixe</th>
+                <td>{{ article.fixe }}</td>
+            </tr>
+            <tr>
+                <th>Coefficient</th>
+                <td>{{ article.coefficient }}</td>
+            </tr>
+            <tr>
+                <th>Serie_lot</th>
+                <td>{{ article.serieLot }}</td>
+            </tr>
+            <tr>
+                <th>Poids_net</th>
+                <td>{{ article.poidsNet }}</td>
+            </tr>
+            <tr>
+                <th>Poids_brut</th>
+                <td>{{ article.poidsBrut }}</td>
+            </tr>
+            <tr>
+                <th>Qte_par_colis</th>
+                <td>{{ article.qteParColis }}</td>
+            </tr>
+            <tr>
+                <th>Est_desactive</th>
+                <td>{{ article.estDesactive ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Cree_par_id</th>
+                <td>{{ article.creeParId }}</td>
+            </tr>
+            <tr>
+                <th>Modifier_par_id</th>
+                <td>{{ article.modifierParId }}</td>
+            </tr>
+            <tr>
+                <th>Marque_id</th>
+                <td>{{ article.marqueId }}</td>
+            </tr>
+            <tr>
+                <th>Eco_participation_id</th>
+                <td>{{ article.ecoParticipationId }}</td>
+            </tr>
+            <tr>
+                <th>Tva_achat_id</th>
+                <td>{{ article.tvaAchatId }}</td>
+            </tr>
+            <tr>
+                <th>Tva_vente_id</th>
+                <td>{{ article.tvaVenteId }}</td>
+            </tr>
+            <tr>
+                <th>Tpf_achat_id</th>
+                <td>{{ article.tpfAchatId }}</td>
+            </tr>
+            <tr>
+                <th>Tpf_vente_id</th>
+                <td>{{ article.tpfVenteId }}</td>
+            </tr>
+            <tr>
+                <th>Conditionnement_achat_id</th>
+                <td>{{ article.conditionnementAchatId }}</td>
+            </tr>
+            <tr>
+                <th>Conditionnement_vente_id</th>
+                <td>{{ article.conditionnementVenteId }}</td>
+            </tr>#}
+            <tr>
+                <th>Est_divers</th>
+                <td>{{ article.estDivers ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Est_publier_web</th>
+                <td>{{ article.estPublierWeb ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Est_contre_marque</th>
+                <td>{{ article.estContreMarque ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Est_gestion_stock</th>
+                <td>{{ article.estGestionStock ? 'Yes' : 'No' }}</td>
+            </tr>
+            {#<tr>
+                <th>Devise_id</th>
+                <td>{{ article.deviseId }}</td>
+            </tr>
+            <tr>
+                <th>Tva_id</th>
+                <td>{{ article.tvaId }}</td>
+            </tr>
+            <tr>
+                <th>Famille_article_id</th>
+                <td>{{ article.familleArticleId }}</td>
+            </tr>
+            <tr>
+                <th>Unite_id</th>
+                <td>{{ article.uniteId }}</td>
+            </tr>
+            <tr>
+                <th>Categorie_depense_id</th>
+                <td>{{ article.categorieDepenseId }}</td>
+            </tr>
+            <tr>
+                <th>Est_depense</th>
+                <td>{{ article.estDepense ? 'Yes' : 'No' }}</td>
+            </tr>#}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_article_index') }}">back to list</a>
+
+    <a href="{{ path('app_article_edit', {'id': article.id}) }}">edit</a>
+
+    {{ include('article/_delete_form.html.twig') }}
+{% endblock %}

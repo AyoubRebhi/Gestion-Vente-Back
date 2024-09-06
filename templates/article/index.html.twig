@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article index{% endblock %}
+
+{% block body %}
+    <h1>Article index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Prix_achat_ht</th>
+                <th>Prix_achat_ttc</th>
+                <th>Prix_vente_ht</th>
+                <th>Prix_vente_ttc</th>
+                <th>Est_affiche_ttc</th>
+                
+                <th>Reference</th>
+                <th>Est_service</th>
+                
+                <th>Code_barre</th>
+                
+                <th>Est_divers</th>
+                <th>Est_publier_web</th>
+                <th>Est_contre_marque</th>
+                <th>Est_gestion_stock</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td>{{ article.id }}</td>
+                <td>{{ article.nom }}</td>
+                <th>{{ article.description }}</th>
+                <td>{{ article.prixAchatHt }}</td>
+                <td>{{ article.prixAchatTtc }}</td>
+                <td>{{ article.prixVenteHt }}</td>
+                <td>{{ article.prixVenteTtc }}</td>
+                <td>{{ article.estAfficheTtc ? 'Yes' : 'No' }}</td>
+                
+                <td>{{ article.reference }}</td>
+                <td>{{ article.estService ? 'Yes' : 'No' }}</td>
+                
+                <td>{{ article.codeBarre }}</td>
+                
+                <td>{{ article.estDivers ? 'Yes' : 'No' }}</td>
+                <td>{{ article.estPublierWeb ? 'Yes' : 'No' }}</td>
+                <td>{{ article.estContreMarque ? 'Yes' : 'No' }}</td>
+                <td>{{ article.estGestionStock ? 'Yes' : 'No' }}</td>
+                
+                <td>
+                    <a href="{{ path('app_article_show', {'id': article.id}) }}">show</a>
+                    <a href="{{ path('app_article_edit', {'id': article.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="47">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_article_new') }}">Create new</a>
+{% endblock %}

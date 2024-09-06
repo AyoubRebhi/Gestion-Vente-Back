@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FamilleArticle{% endblock %}
+
+{% block body %}
+    <h1>FamilleArticle</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ famille_article.id }}</td>
+            </tr>
+            <tr>
+                <th>Est_service</th>
+                <td>{{ famille_article.estService ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Libelle</th>
+                <td>{{ famille_article.libelle }}</td>
+            </tr>
+            <tr>
+                <th>Code</th>
+                <td>{{ famille_article.code }}</td>
+            </tr>
+            <tr>
+                <th>Est_default</th>
+                <td>{{ famille_article.estDefault ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Est_desactive</th>
+                <td>{{ famille_article.estDesactive ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Cree_le</th>
+                <td>{{ famille_article.creeLe ? famille_article.creeLe|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Cree_par</th>
+                <td>{{ famille_article.creePar ? famille_article.creePar|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Cree_par_id</th>
+                <td>{{ famille_article.creeParId }}</td>
+            </tr>
+            <tr>
+                <th>Modifier_le</th>
+                <td>{{ famille_article.modifierLe ? famille_article.modifierLe|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Modifier_par</th>
+                <td>{{ famille_article.modifierPar }}</td>
+            </tr>
+            <tr>
+                <th>Modifier_par_id</th>
+                <td>{{ famille_article.modifierParId }}</td>
+            </tr>
+            <tr>
+                <th>Est_predefini</th>
+                <td>{{ famille_article.estPredefini ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Conditionnement_vente_id</th>
+                <td>{{ famille_article.conditionnementVenteId }}</td>
+            </tr>
+            <tr>
+                <th>Conditionnement_achat_id</th>
+                <td>{{ famille_article.conditionnementAchatId }}</td>
+            </tr>
+            <tr>
+                <th>Est_gestion_stock</th>
+                <td>{{ famille_article.estGestionStock ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Numero_serie_lot</th>
+                <td>{{ famille_article.numeroSerieLot }}</td>
+            </tr>
+            <tr>
+                <th>Coeff_marge</th>
+                <td>{{ famille_article.coeffMarge }}</td>
+            </tr>
+            <tr>
+                <th>Periode_garantie</th>
+                <td>{{ famille_article.periodeGarantie }}</td>
+            </tr>
+            <tr>
+                <th>Contremarque</th>
+                <td>{{ famille_article.contremarque ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Depot_favori</th>
+                <td>{{ famille_article.depotFavori }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_famille_article_index') }}">back to list</a>
+
+    <a href="{{ path('app_famille_article_edit', {'id': famille_article.id}) }}">edit</a>
+
+    {{ include('famille_article/_delete_form.html.twig') }}
+{% endblock %}

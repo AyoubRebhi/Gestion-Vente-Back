@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RemisePromotion index{% endblock %}
+
+{% block body %}
+    <h1>RemisePromotion index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+                <th>Remise_article</th>
+                <th>Remise_client</th>
+                <th>Est_inclure_description</th>
+                <th>Article_offert</th>
+                <th>Date_debut</th>
+                <th>Date_fin</th>
+                <th>Valeur_remise</th>
+                <th>Type_remise</th>
+                <th>Est_calcul_tranche</th>
+                <th>Est_montant_quantite</th>
+                <th>Rang_remise</th>
+                <th>Est_desactive</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for remise_promotion in remise_promotions %}
+            <tr>
+                <td>{{ remise_promotion.id }}</td>
+                <td>{{ remise_promotion.libelle }}</td>
+                <td>{{ remise_promotion.remiseArticle }}</td>
+                <td>{{ remise_promotion.remiseClient }}</td>
+                <td>{{ remise_promotion.estInclureDescription ? 'Yes' : 'No' }}</td>
+                <td>{{ remise_promotion.articleOffert }}</td>
+                <td>{{ remise_promotion.dateDebut ? remise_promotion.dateDebut|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ remise_promotion.dateFin ? remise_promotion.dateFin|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ remise_promotion.valeurRemise }}</td>
+                <td>{{ remise_promotion.typeRemise }}</td>
+                <td>{{ remise_promotion.estCalculTranche ? 'Yes' : 'No' }}</td>
+                <td>{{ remise_promotion.estMontantQuantite ? 'Yes' : 'No' }}</td>
+                <td>{{ remise_promotion.rangRemise }}</td>
+                <td>{{ remise_promotion.estDesactive ? 'Yes' : 'No' }}</td>
+                
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="15">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_remise_promotion_new') }}">Create new</a>
+{% endblock %}

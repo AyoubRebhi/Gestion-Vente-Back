@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RemisePromotion{% endblock %}
+
+{% block body %}
+    <h1>RemisePromotion</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ remise_promotion.id }}</td>
+            </tr>
+            <tr>
+                <th>Libelle</th>
+                <td>{{ remise_promotion.libelle }}</td>
+            </tr>
+            <tr>
+                <th>Remise_article</th>
+                <td>{{ remise_promotion.remiseArticle }}</td>
+            </tr>
+            <tr>
+                <th>Remise_client</th>
+                <td>{{ remise_promotion.remiseClient }}</td>
+            </tr>
+            <tr>
+                <th>Est_inclure_description</th>
+                <td>{{ remise_promotion.estInclureDescription ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Article_offert</th>
+                <td>{{ remise_promotion.articleOffert }}</td>
+            </tr>
+            <tr>
+                <th>Date_debut</th>
+                <td>{{ remise_promotion.dateDebut ? remise_promotion.dateDebut|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date_fin</th>
+                <td>{{ remise_promotion.dateFin ? remise_promotion.dateFin|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Valeur_remise</th>
+                <td>{{ remise_promotion.valeurRemise }}</td>
+            </tr>
+            <tr>
+                <th>Type_remise</th>
+                <td>{{ remise_promotion.typeRemise }}</td>
+            </tr>
+            <tr>
+                <th>Est_calcul_tranche</th>
+                <td>{{ remise_promotion.estCalculTranche ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Est_montant_quantite</th>
+                <td>{{ remise_promotion.estMontantQuantite ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Rang_remise</th>
+                <td>{{ remise_promotion.rangRemise }}</td>
+            </tr>
+            <tr>
+                <th>Est_desactive</th>
+                <td>{{ remise_promotion.estDesactive ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_remise_promotion_index') }}">back to list</a>
+
+    <a href="{{ path('app_remise_promotion_edit', {'id': remise_promotion.id}) }}">edit</a>
+
+    {{ include('remise_promotion/_delete_form.html.twig') }}
+{% endblock %}
